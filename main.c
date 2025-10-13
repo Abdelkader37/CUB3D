@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 14:47:06 by aqrafi            #+#    #+#             */
-/*   Updated: 2025/10/13 14:23:02 by aqrafi           ###   ########.fr       */
+/*   Updated: 2025/10/13 15:32:55 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 int	main(int ac, char **av)
 {
-	mlx_t *mlx;
 	int			fd;
 	t_elements	*elem;
+	t_mlx_data	*data;
 
 	if (ac != 2)
 		return (1);
 	chek_file_extention(av[1], ".cub");
 	fd = open(av[1], O_RDONLY);
 	elem = pase_elemetns(fd);
+	data = init_data
 	// mlx = mlx_init(1500,1500, "CUB3D", 0);
 	// mlx_texture_t *imgg = mlx_load_png("square-.png");
 	// if (imgg == NULL)
