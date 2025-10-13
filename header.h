@@ -9,6 +9,8 @@
 #include "get_next_line/get_next_line.h"
 #include "MLX42/include/MLX42/MLX42.h"
 
+#define ROT_SPEED 0.05
+#define MVT_SPEED 0.05
 #define MAP_SYMBOLS "NSWE0"
 #define PLAYER_SYMBOLS "NSWE"
 
@@ -31,11 +33,9 @@ typedef struct sa_mlx_data
     mlx_image_t *south;
     mlx_image_t *west;
     mlx_image_t *east;
-
-    float   rot_speed;
-    float   mvt_speed;
+    uint32_t color;
     float   dir_x;
-    float   dir_y;
+    float   dir_y;                                                                                                                                                                          
     int   player_y;
     int   player_x;
     float   camerax;

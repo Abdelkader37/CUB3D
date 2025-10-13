@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 14:47:06 by aqrafi            #+#    #+#             */
-/*   Updated: 2025/10/13 15:32:55 by aqrafi           ###   ########.fr       */
+/*   Updated: 2025/10/13 16:22:40 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ int	main(int ac, char **av)
 	chek_file_extention(av[1], ".cub");
 	fd = open(av[1], O_RDONLY);
 	elem = pase_elemetns(fd);
-	data = init_data
+	data = init_data(elem);
+}
+
+
+
 	// mlx = mlx_init(1500,1500, "CUB3D", 0);
 	// mlx_texture_t *imgg = mlx_load_png("square-.png");
 	// if (imgg == NULL)
@@ -41,7 +45,7 @@ int	main(int ac, char **av)
 	// 	y  = 0;
 	// 	while (y < 500)
 	// 	{
-	// 		mlx_put_pixel(img, y, x, 0xff0000ff);
+			// mlx_put_pixel(img, y, x, 0xff0000ff);
 	// 		printf("herer\n");
 	// 		y+=1;
 	// 	}
@@ -50,4 +54,3 @@ int	main(int ac, char **av)
 	// mlx_image_to_window(mlx, img, 0, 0);
 	// mlx_loop(mlx);
 	// mlx_terminate(mlx);
-}

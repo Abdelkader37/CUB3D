@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:44:53 by aqrafi            #+#    #+#             */
-/*   Updated: 2025/10/07 16:45:18 by aqrafi           ###   ########.fr       */
+/*   Updated: 2025/10/13 17:12:02 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,3 +117,59 @@ int color_atoi(char *s)
     }
     return(res);
 }
+
+t_mlx_data init_data(t_elements *elm)
+{
+    t_mlx_data  *data;
+
+    data = malloc(sizeof(t_mlx_data));
+}
+
+void    get_red(t_mlx_data  *data, char **map)
+{
+    int y;
+    int x;
+
+    y = 0;
+    x = 0;
+    while (map[y])
+    {
+        x = 0;
+        while (map[y][x])
+        {
+            if(str_char(map[y][x], PLAYER_SYMBOLS))
+            {
+                data->player_x = map[y][x];
+                data->player_y = map[y];
+                match_dir(data, map[y][x]);
+                return;
+            }
+            x++;
+        }
+        y++;
+    }
+}
+void     match_dir(t_mlx_data   *data, char c)
+{
+    if(c == 'N')
+    {
+        data->dir_x = 0;
+        data->dir_y = -1;
+    }
+    if(c == 'S')
+    {
+        data->dir_x = 0;
+        data->dir_y = 1;
+    }
+    if(c == 'W')
+    {
+        data->dir_x = -1;
+        data->dir_y = 0;
+    }
+    if(c == 'E')
+    {
+        data->dir_x = 1;
+        data->dir_y = 0;
+    }
+}
+
