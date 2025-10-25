@@ -43,6 +43,7 @@ typedef struct sa_mlx_data
     float   plan_y;
     float   ray_x;
     float   ray_y;
+    float   ray_dis;
 }t_mlx_data;
 
 char **parse_map(int fd);
