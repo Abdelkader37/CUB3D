@@ -37,7 +37,7 @@ typedef struct sa_mlx_data
     mlx_image_t *east;
     uint32_t color;
     float   dir_x;
-    float   dir_y;                                                                                                                                                                          
+    float   dir_y;                                                                                                                                                                       
     int   player_y;
     int   player_x;
     float   camerax;
@@ -45,6 +45,7 @@ typedef struct sa_mlx_data
     float   plan_y;
     float   ray_x;
     float   ray_y;
+    float   ray_dis;
 }t_mlx_data;
 
 char **parse_map(int fd);
