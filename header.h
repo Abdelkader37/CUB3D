@@ -10,6 +10,8 @@
 #include "MLX42/include/MLX42/MLX42.h"
 
 #define ROT_SPEED 0.05
+#define WIDTH   1500
+#define HEIGHT  1500
 #define MVT_SPEED 0.05
 #define MAP_SYMBOLS "NSWE0"
 #define PLAYER_SYMBOLS "NSWE"

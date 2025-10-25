@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:44:53 by aqrafi            #+#    #+#             */
-/*   Updated: 2025/10/13 17:12:02 by aqrafi           ###   ########.fr       */
+/*   Updated: 2025/10/18 18:56:48 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,14 +118,39 @@ int color_atoi(char *s)
     return(res);
 }
 
-t_mlx_data init_data(t_elements *elm)
+t_mlx_data *init_data(t_elements *elm)
 {
     t_mlx_data  *data;
 
     data = malloc(sizeof(t_mlx_data));
+    data->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", 0);
+    get_dir(data, elm->map);
+    data->north = png_to_img(elm->no, data->mlx);
+    data->west = png_to_img(elm->we, data->mlx);
+    data->south = png_to_img(elm->so, data->mlx);
+    data->east = png_to_img(elm->ea, data->mlx);
+    return(data);
 }
+mlx_image_t *png_to_img(char *path, mlx_t *mlx)
+{
+   mlx_texture_t *txt;
+   mlx_image_t *img;
 
-void    get_red(t_mlx_data  *data, char **map)
+    txt = mlx_load_png(path);
+    if(!txt)
+    {
+        write(2, "Error: invalid path\n",21);
+        exit(1);
+    }
+    img = mlx_texture_to_image(mlx, txt);
+    if(!img)
+    {
+        write(2, "Error: invalid path\n",21);
+        exit(1);
+    }
+    return(img);
+}
+void    get_dir(t_mlx_data  *data, char **map)
 {
     int y;
     int x;
@@ -156,17 +181,17 @@ void     match_dir(t_mlx_data   *data, char c)
         data->dir_x = 0;
         data->dir_y = -1;
     }
-    if(c == 'S')
+    else if(c == 'S')
     {
         data->dir_x = 0;
         data->dir_y = 1;
     }
-    if(c == 'W')
+    else if(c == 'W')
     {
         data->dir_x = -1;
         data->dir_y = 0;
     }
-    if(c == 'E')
+    else if(c == 'E')
     {
         data->dir_x = 1;
         data->dir_y = 0;
