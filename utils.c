@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:44:53 by aqrafi            #+#    #+#             */
-/*   Updated: 2025/10/18 18:56:48 by aqrafi           ###   ########.fr       */
+/*   Updated: 2025/10/25 17:51:48 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,8 +164,8 @@ void    get_dir(t_mlx_data  *data, char **map)
         {
             if(str_char(map[y][x], PLAYER_SYMBOLS))
             {
-                data->player_x = map[y][x];
-                data->player_y = map[y];
+                data->player_x = x + 0.5;
+                data->player_y = y + 0.5;
                 match_dir(data, map[y][x]);
                 return;
             }

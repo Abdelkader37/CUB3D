@@ -38,8 +38,8 @@ typedef struct sa_mlx_data
     uint32_t color;
     float   dir_x;
     float   dir_y;                                                                                                                                                                       
-    int   player_y;
-    int   player_x;
+    float   player_y;
+    float   player_x;
     float   camerax;
     float   plan_x;
     float   plan_y;
@@ -48,6 +48,7 @@ typedef struct sa_mlx_data
     float   ray_dis;
 }t_mlx_data;
 
+t_mlx_data *init_data(t_elements *elm);
 char **parse_map(int fd);
 void hundle_elem(t_elements *elm, char *line);
 t_elements    *init_elm(void);
