@@ -72,7 +72,7 @@ void dda(t_mlx_data *data, char **map)
             mapy += stepy;
             side = 1;
         }
-        if(mapx < 0 || mapy < 0  || mapy > || mapx > ft_strlen(map[mapy]))
+        if(mapx < 0 || mapy < 0  || mapy > map_size || mapx > ft_strlen(map[mapy]))
         {
             hit = 1;
             break;
