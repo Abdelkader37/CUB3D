@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:20:56 by aqrafi            #+#    #+#             */
-/*   Updated: 2025/10/07 16:48:17 by aqrafi           ###   ########.fr       */
+/*   Updated: 2025/11/15 21:59:18 by rroundi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
 
 void	chek_file_extention(char *s1, char *s2)
 {
 	int	len1;
 	int	len2;
 
-	len1 = ft_strlen(s1) - 1;
-	len2 = ft_strlen(s2) - 1;
+	len1 = (int)ft_strlen(s1) - 1;
+	len2 = (int)ft_strlen(s2) - 1;
 	while (len1 >= 0 || len2 >= 0)
 	{
 		if (s1[len1] != s2[len2])

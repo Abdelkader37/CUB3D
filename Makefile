@@ -1,8 +1,8 @@
 NAME = cub3D
 
-SRC = main.c map.c  utils.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c ft_split.c
+SRC = main.c  parse.c ft_split.c raycasting.c rendering.c utils.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c  
 OBJ = $(SRC:.c=.o)
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g -I. -Iget_next_line -IMLX42/include
 CC = cc 
 HDR = header.h get_next_line/get_next_line.h
 MLX=./MLX42/build/libmlx42.a
