@@ -6,7 +6,7 @@
 /*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 22:39:42 by rroundi           #+#    #+#             */
-/*   Updated: 2025/11/19 13:04:40 by rroundi          ###   ########.fr       */
+/*   Updated: 2025/11/20 15:00:02 by rroundi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@
 #define MVT_SPEED 0.05
 #define MAP_SYMBOLS "NSWE0"
 #define PLAYER_SYMBOLS "NSWE"
-#define SPEED 0.1
+#define SPEED 0.05
 #define MLX_KEY_W 87
 #define MLX_KEY_S 83
 #define MLX_KEY_D 68
 #define MLX_KEY_A 65
+#define ROT 0.05f
+#define L_KEY 37
+#define R_KEY 39
 
 typedef struct sa_elements
 {
@@ -102,5 +105,7 @@ void	left(t_mlx_data *data);
 void	right(t_mlx_data *data);
 void	handle_key_press(mlx_key_data_t key, void	*par);
 void	loop(void *par);
+void	rotate_r(t_mlx_data *data);
+void	rotate_l(t_mlx_data *data);
 
 #endif
