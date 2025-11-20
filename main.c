@@ -26,5 +26,7 @@ int    main(int ac, char **av)
     elem = pase_elemetns(fd);
     data = init_data(elem);
     randering(data, elem->map);
+    mlx_key_hook(data->mlx, &handle_key_press, data);
+    mlx_loop_hook(data->mlx, &loop, data);
     mlx_loop(data->mlx);
 }

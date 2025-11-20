@@ -6,7 +6,7 @@
 /*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:44:53 by aqrafi            #+#    #+#             */
-/*   Updated: 2025/11/11 18:22:52 by rroundi          ###   ########.fr       */
+/*   Updated: 2025/11/18 00:03:32 by rroundi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,10 +126,11 @@ t_mlx_data *init_data(t_elements *elm)
     data->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", 0);
     get_dir(data, elm->map);
 	data->img = mlx_new_image(data->mlx, 1500, 1500);
-    data->north = png_to_img(elm->no, data->mlx);
-    data->west = png_to_img(elm->we, data->mlx);
-    data->south = png_to_img(elm->so, data->mlx);
-    data->east = png_to_img(elm->ea, data->mlx);
+    // data->north = png_to_img(elm->no, data->mlx);
+    // data->west = png_to_img(elm->we, data->mlx);
+    // data->south = png_to_img(elm->so, data->mlx);
+    // data->east = png_to_img(elm->ea, data->mlx);
+	data->map = elm->map;
     return(data);
 }
 

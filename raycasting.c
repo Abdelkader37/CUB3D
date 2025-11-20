@@ -98,14 +98,13 @@ void randering(t_mlx_data *data, char **map)
         data->ray_x = data->dir_x + data->plan_x * data->camerax;
         data->ray_y = data->dir_y + data->plan_y * data->camerax;
         dda(data, map);
-        wall_height(data);
-        ceiling(data, x);
-        wall(data, x);
-        floor(data, x);
+		wall_height(data);
+		ceiling(data, x);
+		wall(data, x);
+		floor_r(data, x);
         x++;
     }
     mlx_image_to_window(data->mlx, data->img, 0 , 0);
 }
-
 
 
