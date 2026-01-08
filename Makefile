@@ -1,6 +1,6 @@
 NAME = cub3D
 
-SRC = main.c  parse.c ft_split.c raycasting.c rendering.c utils.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c movements.c mlx_handling.c rotations.c 
+SRC = main.c  parse.c ft_split.c raycasting.c rendering.c utils.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c movements.c mlx_handling.c rotations.c parseII.c
 OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g -I. -Iget_next_line -IMLX42/include
 CC = cc 
