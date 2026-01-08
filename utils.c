@@ -6,7 +6,7 @@
 /*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:44:53 by aqrafi            #+#    #+#             */
-/*   Updated: 2025/11/18 00:03:32 by rroundi          ###   ########.fr       */
+/*   Updated: 2026/01/08 20:09:56 by rroundi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,16 +121,28 @@ int color_atoi(char *s)
 t_mlx_data *init_data(t_elements *elm)
 {
     t_mlx_data  *data;
+	mlx_texture_t *tmp;
 
     data = malloc(sizeof(t_mlx_data));
     data->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", 0);
     get_dir(data, elm->map);
-	data->img = mlx_new_image(data->mlx, 1500, 1500);
-    // data->north = png_to_img(elm->no, data->mlx);
-    // data->west = png_to_img(elm->we, data->mlx);
-    // data->south = png_to_img(elm->so, data->mlx);
-    // data->east = png_to_img(elm->ea, data->mlx);
+	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->map = elm->map;
+	data->ceiling_color = (elm->c[0] << 24) | (elm->c[1] << 16) | (elm->c[2] << 8) | 0xFF;
+	data->floor_color = (elm->f[0] << 24) | (elm->f[1] << 16) | (elm->f[2] << 8) | 0xFF;
+	tmp = mlx_load_png(elm->no);
+    data->north = mlx_texture_to_image(data->mlx, tmp);
+	mlx_delete_texture(tmp);
+	tmp = mlx_load_png(elm->so);
+    data->south = mlx_texture_to_image(data->mlx, tmp);
+	mlx_delete_texture(tmp);
+	tmp = mlx_load_png(elm->we);
+    data->west = mlx_texture_to_image(data->mlx, tmp);
+	mlx_delete_texture(tmp);
+	tmp = mlx_load_png(elm->ea);
+    data->east = mlx_texture_to_image(data->mlx, tmp);
+	mlx_delete_texture(tmp);
+
     return(data);
 }
 
