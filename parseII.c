@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 17:40:01 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/08 21:25:33 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/08 22:19:41 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	hundle_elem(t_elements *elm, char *line)
 	}
 	line = tmp;
 }
-void free_elm(t_elements *elm)
-{
-	free(elm->ea);
-	free(elm->no);
-	free()
-}
+// void free_elm(t_elements *elm)
+// {
+// 	free(elm->ea);
+// 	free(elm->no);
+// 	free()
+// }
