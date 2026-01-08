@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:20:56 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/08 18:23:03 by aqrafi           ###   ########.fr       */
+/*   Updated: 2025/11/15 21:59:18 by rroundi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,66 @@ t_elements	*pase_elemetns(int fd)
 	return (elm);
 }
 
+void	hundle_elem(t_elements *elm, char *line)
+{
+	char	*tmp;
 
+	if (word_cont(line) != 2)
+	{
+		write(2, "Error: Invalid element 1", 25);
+		exit(1);
+	}
+	tmp = line;
+	skip_space(&line);
+	if (*line == 'F' && *(line + 1) == ' ' && elm->f == NULL)
+	{
+		line = line + 1;
+		skip_space(&line);
+		elm->f = parse_color(line);
+		elm->paths++;
+	}
+	else if (*line == 'C' && *(line + 1) == ' ' && elm->c == NULL)
+	{
+		line = line + 1;
+		skip_space(&line);
+		elm->c = parse_color(line);
+		elm->paths++;
+	}
+	else if (*line == 'N' && line[1] == 'O' && line[2] == ' ' && elm->no == NULL)
+	{
+		line = line + 2;
+		skip_space(&line);
+		elm->no = dup_elm(line);
+		elm->paths++;
+	}
+	else if (*line == 'S' && *(line + 1) == 'O' && *(line + 2) == ' ' && elm->so == NULL)
+	{
+		line = line + 2;
+		skip_space(&line);
+		elm->so = dup_elm(line);
+		elm->paths++;
+	}
+	else if (*line == 'W' && *(line + 1) == 'E' && *(line + 2) == ' ' && elm->we == NULL)
+	{
+		line = line + 2;
+		skip_space(&line);
+		elm->we = dup_elm(line);
+		elm->paths++;
+	}
+	else if (*line == 'E' && *(line + 1) == 'A' && *(line + 2) == ' ' && elm->ea == NULL)
+	{
+		line = line + 2;
+		skip_space(&line);
+		elm->ea = dup_elm(line);
+		elm->paths++;
+	}
+	else
+	{
+		write(2, "Error: Invalid element 2", 25);
+		exit(1);
+	}
+	line = tmp;
+}
 
 char	**parse_map(int fd)
 {
@@ -192,7 +251,7 @@ void	chek_symbol(char *map)
 	}
 }
 
-int	*dup_color(char *line)
+int	*parse_color(char *line)
 {
 	char	*tmp;
 	char	**str;

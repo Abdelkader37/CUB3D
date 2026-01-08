@@ -84,6 +84,13 @@ void dda(t_mlx_data *data, char **map)
         data->ray_dis = (mapx - data->player_x + (1 - stepx) / 2) / data->ray_x;
     else
         data->ray_dis = (mapy - data->player_y + (1 - stepy) / 2) / data->ray_y;
+	data->side = side;
+	if (side == 0)
+        data->wall_x = data->player_y + data->ray_dis * data->ray_y;
+    else
+        data->wall_x = data->player_x + data->ray_dis * data->ray_x;
+    
+    data->wall_x = data->wall_x - floor(data->wall_x);
 }
 
 void randering(t_mlx_data *data, char **map)
@@ -92,7 +99,7 @@ void randering(t_mlx_data *data, char **map)
 
     get_plan(data);
     x = 0;
-    while (x <= 1500)
+    while (x <= WIDTH)
     {
         get_camerax(data, x);
         data->ray_x = data->dir_x + data->plan_x * data->camerax;

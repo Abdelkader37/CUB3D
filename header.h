@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 22:39:42 by rroundi           #+#    #+#             */
-/*   Updated: 2026/01/08 18:06:09 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/08 20:07:14 by rroundi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
 #include "get_next_line/get_next_line.h"
 #include "MLX42/include/MLX42/MLX42.h"
 
-#define ROT_SPEED 0.1
-#define WIDTH   1500
-#define HEIGHT  1500
-#define MVT_SPEED 0.1
+#define ROT_SPEED 0.05
+#define WIDTH   1200
+#define HEIGHT  1000
+#define MVT_SPEED 0.05
 #define MAP_SYMBOLS "NSWE0"
 #define PLAYER_SYMBOLS "NSWE"
-#define SPEED 0.1
+#define SPEED 0.08
 #define MLX_KEY_W 87
 #define MLX_KEY_S 83
 #define MLX_KEY_D 68
@@ -71,6 +71,12 @@ typedef struct sa_mlx_data
 	int		draw_start;
 	int		draw_end;
 	char	**map;
+	t_elements *elements;
+	int side;
+	double wall_x;
+
+	uint32_t floor_color;
+    uint32_t ceiling_color;
 }t_mlx_data;
 
 t_mlx_data *init_data(t_elements *elm);
@@ -90,7 +96,7 @@ void chek_map(char **map);
 void    chek_symbol(char *map);
 char *dup_elm(char *s);
 int color_atoi(char *s);
-int		*dup_color(char *line);
+int		*parse_color(char *line);
 void	wall_height(t_mlx_data	*data);
 void    get_dir(t_mlx_data  *data, char **map);
 mlx_image_t *png_to_img(char *path, mlx_t *mlx);

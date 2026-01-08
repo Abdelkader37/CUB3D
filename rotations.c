@@ -6,7 +6,7 @@
 /*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:42:21 by rroundi           #+#    #+#             */
-/*   Updated: 2025/11/20 13:11:10 by rroundi          ###   ########.fr       */
+/*   Updated: 2026/01/08 18:12:26 by rroundi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	rotate_r(t_mlx_data *data)
 
 	odir_x = data->dir_x;
 	oplan_x = data->plan_x;
-	// rotate direction
+
 	data->dir_x = data->dir_x * cos(-ROT) - data->dir_y * sin(-ROT);
 	data->dir_y = odir_x * sin(-ROT) + data->dir_y * cos(-ROT);
 	//rotate camera plan
