@@ -13,20 +13,20 @@
 
 #include "header.h"
 
-int    main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    int            fd;
-    t_elements    *elem;
-    t_mlx_data    *data;
+	int			fd;
+	t_elements	*elem;
+	t_mlx_data	*data;
 
-    if (ac != 2)
-        return (1);
-    chek_file_extention(av[1], ".cub");
-    fd = open(av[1], O_RDONLY);
-    elem = pase_elemetns(fd);
-    data = init_data(elem);
-    randering(data, elem->map);
-    mlx_key_hook(data->mlx, &handle_key_press, data);
-    mlx_loop_hook(data->mlx, &loop, data);
-    mlx_loop(data->mlx);
+	if (ac != 2)
+		return (1);
+	chek_file_extention(av[1], ".cub");
+	fd = open(av[1], O_RDONLY);
+	elem = pase_elemetns(fd);
+	data = init_data(elem);
+	randering(data, elem->map);
+	mlx_key_hook(data->mlx, &handle_key_press, data);
+	mlx_loop_hook(data->mlx, &loop, data);
+	mlx_loop(data->mlx);
 }

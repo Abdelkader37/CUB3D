@@ -29,8 +29,8 @@ void	rotate_l(t_mlx_data *data)
 
 void	rotate_r(t_mlx_data *data)
 {
-	float	odir_x;
-	float	oplan_x;
+	float odir_x;
+	float oplan_x;
 
 	odir_x = data->dir_x;
 	oplan_x = data->plan_x;

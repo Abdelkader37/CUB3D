@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 22:39:42 by rroundi           #+#    #+#             */
-/*   Updated: 2026/01/08 20:07:14 by rroundi          ###   ########.fr       */
+/*   Updated: 2026/01/10 00:15:45 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct sa_mlx_data
 }t_mlx_data;
 
 t_mlx_data *init_data(t_elements *elm);
-char **parse_map(int fd);
+void parse_map(int fd, t_elements *elm);
 void hundle_elem(t_elements *elm, char *line);
 t_elements    *init_elm(void);
 t_elements *pase_elemetns(int fd);
@@ -90,13 +90,13 @@ void    skip_space(char **str);
 void chek_file_extention(char *s1, char *s2);
 int str_char(char c, char *str);
 int get_size(char **str);
-void chek_player(char **map, int x , int y, int size);
-void chek_space(char **map, int x , int y, int size);
-void chek_map(char **map);
-void    chek_symbol(char *map);
+void	chek_player(t_elements *elm, int x, int y, int size);
+void	chek_space(t_elements *elm, int x, int y, int size);
+void	chek_map(t_elements *elm);
+void    chek_symbol(char *map, t_elements *elm);
 char *dup_elm(char *s);
 int color_atoi(char *s);
-int		*parse_color(char *line);
+int		*dup_color(char *line);
 void	wall_height(t_mlx_data	*data);
 void    get_dir(t_mlx_data  *data, char **map);
 mlx_image_t *png_to_img(char *path, mlx_t *mlx);
@@ -113,5 +113,6 @@ void	handle_key_press(mlx_key_data_t key, void	*par);
 void	loop(void *par);
 void	rotate_r(t_mlx_data *data);
 void	rotate_l(t_mlx_data *data);
+void ft_error(char *error, t_elements *elm, char *line);
 
 #endif
