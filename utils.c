@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:44:53 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/09 23:07:07 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/10 21:06:45 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,20 +101,14 @@ int	color_atoi(char *s)
 	i = 0;
 	res = 0;
 	if (ft_strlen(s) > 3)
-	{
-		write(2, "Error: Invalid color\n", 22);
-		exit(1);
-	}
+		return (-1);
 	while (s[i] && (s[i] >= '0' && s[i] <= '9'))
 	{
 		res = res * 10 + (s[i] - 48);
 		i++;
 	}
 	if ((s[i] && !(s[i] >= '0' && s[i] <= '9')) || res > 255)
-	{
-		write(2, "Error: Invalid color\n", 22);
-		exit(1);
-	}
+		return (-1);
 	return (res);
 }
 

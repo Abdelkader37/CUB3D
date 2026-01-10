@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 22:39:42 by rroundi           #+#    #+#             */
-/*   Updated: 2026/01/10 00:15:45 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/10 21:16:28 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,21 @@ typedef struct sa_elements
     int    *f;
     int    *c;
     char **map;
+    int fd;
 }t_elements;
 
+typedef struct s_ray
+{
+    float   deltax;
+    float   deltay;
+    float   disx;
+    float   disy;
+    int     stepx;
+    int     stepy;
+    int     mapx;
+    int     mapy;
+    int     side;
+}   t_ray;
 typedef struct sa_mlx_data
 {
     mlx_t   *mlx;

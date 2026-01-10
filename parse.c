@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:20:56 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/10 00:16:04 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/10 20:40:25 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_elements	*pase_elemetns(int fd)
 	char		*line;
 
 	elm = init_elm();
+	elm->fd = fd;
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -88,7 +89,6 @@ void	parse_map(int fd, t_elements *elm)
 			return (free(s), ft_error("Error: Invalid map", elm, line));
 	}
 	chek_symbol(s, elm);
-	close(fd);
 }
 
 void	chek_map(t_elements *elm)
@@ -181,12 +181,11 @@ int	*dup_color(char *line)
 	tmp = dup_elm(line);
 	str = ft_split(tmp, ',');
 	if (get_size(str) != 3)
-	{
-		write(2, " Error: Invalid color\n", 23);
-		exit(1);
-	}
+		return (NULL);
 	arr[0] = color_atoi(str[0]);
 	arr[1] = color_atoi(str[1]);
 	arr[2] = color_atoi(str[2]);
+	if (arr[0] == -1 || arr[1] == -1 || arr[2] == -1)
+		return (NULL);
 	return (arr);
 }

@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:15:28 by aqrafi            #+#    #+#             */
-/*   Updated: 2025/10/02 20:00:33 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/10 23:53:12 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,9 @@ static char	**copy_s(char **str, const char *s, char c, int cnt)
 
 char	**ft_split(char const *s, char c)
 {
-	char **str;
-	int cnt;
-	int j;
+	char	**str;
+	int		cnt;
+	int		j;
 
 	if (!s)
 		return (NULL);
