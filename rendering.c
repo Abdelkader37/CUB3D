@@ -8,7 +8,7 @@ uint32_t	get_texture_pixel(mlx_image_t *texture, uint32_t x, uint32_t y)
 	uint32_t	g;
 	uint32_t	b;
 	uint32_t	a;
-
+	
 	if (!texture || x >= texture->width || y >= texture->height)
 		return (0x808080FF);
 	index = (y * texture->width + x) * 4;
@@ -23,8 +23,6 @@ uint32_t	get_texture_pixel(mlx_image_t *texture, uint32_t x, uint32_t y)
 void	wall_height(t_mlx_data *data)
 {
 	data->line_height = (int)(HEIGHT / data->ray_dis);
-	// printf("this is the wall height: %d\n", data->line_height);
-	// printf("this is raydis:t %f\n", data->ray_dis);
 	data->draw_start = -data->line_height / 2 + HEIGHT / 2;
 	if (data->draw_start < 0)
 		data->draw_start = 0;
@@ -33,31 +31,38 @@ void	wall_height(t_mlx_data *data)
 		data->draw_end = HEIGHT - 1;
 }
 
-void	wall(t_mlx_data *data, int x)
+void wall(t_mlx_data *data, int x)
 {
-	mlx_image_t	*texture;
-	int			tex_x;
-	int			y;
-	int			tex_y;
-	uint32_t	color;
+    mlx_image_t *texture;
+    int tex_x;
+    int y;
+    double step;
+    double tex_pos;
 
-	if (data->side == 0 && data->ray_x < 0)
-		texture = data->west;
-	else if (data->side == 0 && data->ray_x > 0)
-		texture = data->east;
-	else if (data->side == 1 && data->ray_y < 0)
-		texture = data->north;
-	else
-		texture = data->south;
-	tex_x = (int)(data->wall_x * texture->width);
-	y = data->draw_start;
-	while (y < data->draw_end)
-	{
-		tex_y = ((y - data->draw_start) * texture->height) / data->line_height;
-		color = get_texture_pixel(texture, tex_x, tex_y);
-		mlx_put_pixel(data->img, x, y, color);
-		y++;
-	}
+    if (data->side == 0 && data->ray_x < 0)
+        texture = data->west;
+    else if (data->side == 0 && data->ray_x > 0)
+        texture = data->east;
+    else if (data->side == 1 && data->ray_y < 0)
+        texture = data->north;
+    else
+        texture = data->south;
+    tex_x = (int)(data->wall_x * texture->width);
+    step = 1.0 * texture->height / data->line_height;
+    tex_pos = (data->draw_start - HEIGHT / 2 + data->line_height / 2) * step;
+    
+    y = data->draw_start;
+    while (y < data->draw_end)
+    {
+        int tex_y = (int)tex_pos % texture->height;
+        if (tex_y < 0)
+            tex_y += texture->height;
+        tex_pos += step;
+        
+        uint32_t color = get_texture_pixel(texture, tex_x, tex_y);
+        mlx_put_pixel(data->img, x, y, color);
+        y++;
+    }
 }
 
 void	ceiling(t_mlx_data *data, int x)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:44:53 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/10 21:06:45 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/11 06:55:08 by rroundi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,27 +115,19 @@ int	color_atoi(char *s)
 t_mlx_data	*init_data(t_elements *elm)
 {
 	t_mlx_data		*data;
-	mlx_texture_t	*tmp;
 
 	data = malloc(sizeof(t_mlx_data));
 	data->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", 0);
 	get_dir(data, elm->map);
 	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	mlx_image_to_window(data->mlx, data->img, 0, 0);
 	data->map = elm->map;
 	data->ceiling_color = (elm->c[0] << 24) | (elm->c[1] << 16) | (elm->c[2] << 8) | 0xFF;
 	data->floor_color = (elm->f[0] << 24) | (elm->f[1] << 16) | (elm->f[2] << 8) | 0xFF;
-	tmp = mlx_load_png(elm->no);
-	data->north = mlx_texture_to_image(data->mlx, tmp);
-	mlx_delete_texture(tmp);
-	tmp = mlx_load_png(elm->so);
-	data->south = mlx_texture_to_image(data->mlx, tmp);
-	mlx_delete_texture(tmp);
-	tmp = mlx_load_png(elm->we);
-	data->west = mlx_texture_to_image(data->mlx, tmp);
-	mlx_delete_texture(tmp);
-	tmp = mlx_load_png(elm->ea);
-	data->east = mlx_texture_to_image(data->mlx, tmp);
-	mlx_delete_texture(tmp);
+	data->north = png_to_img(elm->no, data->mlx);
+	data->south = png_to_img(elm->so, data->mlx);
+	data->west = png_to_img(elm->we, data->mlx);
+	data->east =  png_to_img(elm->ea, data->mlx);
 	return (data);
 }
 
@@ -156,6 +148,7 @@ mlx_image_t	*png_to_img(char *path, mlx_t *mlx)
 		write(2, "Error: invalid path\n", 21);
 		exit(1);
 	}
+	mlx_delete_texture(txt);
 	return (img);
 }
 void	get_dir(t_mlx_data *data, char **map)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 23:56:08 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/10 23:56:09 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/11 05:50:25 by rroundi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	get_plan(t_mlx_data *data)
 
 void	get_camerax(t_mlx_data *data, int x)
 {
-	data->camerax = 2 * (float)x / 1500 - 1;
+	data->camerax = 2 * (float)x / WIDTH - 1;
 }
 void	init_delta(t_mlx_data *data, t_ray *ray)
 {
@@ -130,5 +130,4 @@ void	randering(t_mlx_data *data, char **map)
 		floor_r(data, x);
 		x++;
 	}
-	mlx_image_to_window(data->mlx, data->img, 0, 0);
 }

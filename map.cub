@@ -1,8 +1,8 @@
 
-NO ./textures/822.png
-SO ./textures/884.png
-WE ./textures/885.png
-EA ./textures/822.png
+NO ./textures/north.png
+SO ./textures/south.png
+WE ./textures/west.png
+EA ./textures/east.png
 F   212,100,0
 C   226,30,0
 
