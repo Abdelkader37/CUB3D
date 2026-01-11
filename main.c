@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 14:47:06 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/10 23:53:28 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/11 10:49:22 by rroundi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,8 @@ int	main(int ac, char **av)
 	mlx_key_hook(data->mlx, &handle_key_press, data);
 	mlx_loop_hook(data->mlx, &loop, data);
 	mlx_loop(data->mlx);
+	close(fd);
+	mlx_terminate(data->mlx);
+	free_elm2(elem);
+	free_data(data);
 }
