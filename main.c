@@ -6,7 +6,7 @@
 /*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 14:47:06 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/11 10:49:22 by rroundi          ###   ########.fr       */
+/*   Updated: 2026/01/12 09:21:22 by rroundi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int	main(int ac, char **av)
 	mlx_loop(data->mlx);
 	close(fd);
 	mlx_terminate(data->mlx);
-	free_elm2(elem);
+	free_eml2(elem);
 	free_data(data);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 22:39:42 by rroundi           #+#    #+#             */
-/*   Updated: 2026/01/10 21:16:28 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/12 09:21:12 by rroundi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,8 @@ void	loop(void *par);
 void	rotate_r(t_mlx_data *data);
 void	rotate_l(t_mlx_data *data);
 void ft_error(char *error, t_elements *elm, char *line);
+void	free_map(char **map);
+void	free_eml2(t_elements *elm);
+void	free_data(t_mlx_data *data);
 
 #endif
