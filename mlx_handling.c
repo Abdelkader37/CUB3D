@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_handling.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:34:35 by rroundi           #+#    #+#             */
-/*   Updated: 2025/11/20 13:16:35 by rroundi          ###   ########.fr       */
+/*   Updated: 2026/01/15 00:04:36 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ void	handle_key_press(mlx_key_data_t key, void *par)
 			rotate_l(data);
 	}
 }
+
 void	loop(void *par)
 {
-	t_mlx_data *data;
+	t_mlx_data	*data;
 
 	data = (t_mlx_data *)par;
 	randering(data, data->map);

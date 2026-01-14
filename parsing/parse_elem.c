@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 17:40:01 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/13 22:29:09 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/14 20:39:58 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,26 +59,39 @@ void	hundle_elem(t_elements *elm, char *line)
 	line = tmp;
 }
 
-void	free_elm(t_elements *elm, char *line)
+char	*dup_elm(char *s)
 {
-	free(elm->ea);
-	free(elm->no);
-	free(elm->so);
-	free(elm->we);
-	free(elm->c);
-	free(elm->f);
-	close(elm->fd);
-	free(line);
-	free(elm);
+	int		i;
+	char	*rs;
+	int		len;
+
+	len = ft_strlen(s);
+	rs = malloc(len);
+	i = 0;
+	while (s[i] && s[i] != ' ' && s[i] != '\n')
+	{
+		rs[i] = s[i];
+		i++;
+	}
+	rs[i] = '\0';
+	return (rs);
 }
 
-void	ft_error(char *error, t_elements *elm, char *line)
+int	color_atoi(char *s)
 {
-	printf("%s\n", error);
-	if(elm)
+	int	res;
+	int	i;
+
+	i = 0;
+	res = 0;
+	if (ft_strlen(s) > 3)
+		return (-1);
+	while (s[i] && (s[i] >= '0' && s[i] <= '9'))
 	{
-		free_map(elm->map);
-		free_elm(elm, line);
+		res = res * 10 + (s[i] - 48);
+		i++;
 	}
-	exit(1);
+	if ((s[i] && !(s[i] >= '0' && s[i] <= '9')) || res > 255)
+		return (-1);
+	return (res);
 }

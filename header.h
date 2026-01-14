@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 22:39:42 by rroundi           #+#    #+#             */
-/*   Updated: 2026/01/13 22:10:27 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/15 00:43:16 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@
 #define ROT_SPEED 0.05
 #define WIDTH   1200
 #define HEIGHT  1000
-#define MVT_SPEED 0.05
+#define MVT_SPEED 0.15
 #define MAP_SYMBOLS "NSWE0"
 #define PLAYER_SYMBOLS "NSWE"
-#define SPEED 0.08
+#define SPEED 0.18
 #define MLX_KEY_W 87
 #define MLX_KEY_S 83
 #define MLX_KEY_D 68
 #define MLX_KEY_A 65
-#define ROT 0.05f
+#define ROT 0.15f
 #define L_KEY 37
 #define R_KEY 39
 
@@ -94,6 +94,10 @@ typedef struct sa_mlx_data
 
 t_mlx_data *init_data(t_elements *elm);
 void parse_map(int fd, t_elements *elm);
+void	init_delta(t_mlx_data *data, t_ray *ray);
+void	get_camerax(t_mlx_data *data, int x);
+void	get_plan(t_mlx_data *data);
+void	init_steps(t_mlx_data *data, t_ray *ray);
 void hundle_elem(t_elements *elm, char *line);
 t_elements    *init_elm(void);
 t_elements *pase_elemetns(int fd);

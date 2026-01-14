@@ -1,5 +1,7 @@
 NAME = cub3D
-SRC = main.c  parsing/parse.c ft_split.c raycasting.c rendering.c utils.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c movements.c mlx_handling.c rotations.c parsing/parse_elem.c free.c
+SRC =	main.c  parsing/parse.c parsing/ft_split.c rendering.c utils.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
+		movements.c mlx_handling.c rotations.c parsing/parse_elem.c free.c parsing/parse_map.c raycasting/raycasting.c raycasting/raycasting_utils.c\
+		mlx/mlx.c
 OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror -g -I. -Iget_next_line -IMLX42/include
 CC = cc 

@@ -6,26 +6,11 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:44:53 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/13 22:53:40 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/14 20:44:14 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-t_elements	*init_elm(void)
-{
-	t_elements	*elm;
-
-	elm = malloc(sizeof(t_elements));
-	elm->c = NULL;
-	elm->ea = NULL;
-	elm->f = NULL;
-	elm->no = NULL;
-	elm->so = NULL;
-	elm->we = NULL;
-	elm->paths = 0;
-	return (elm);
-}
 
 void	skip_space(char **str)
 {
@@ -65,6 +50,7 @@ int	str_char(char c, char *str)
 	}
 	return (0);
 }
+
 int	get_size(char **str)
 {
 	int	y;
@@ -75,83 +61,6 @@ int	get_size(char **str)
 	return (y);
 }
 
-char	*dup_elm(char *s)
-{
-	int		i;
-	char	*rs;
-	int		len;
-
-	len = ft_strlen(s);
-	rs = malloc(len);
-	i = 0;
-	while (s[i] && s[i] != ' ' && s[i] != '\n')
-	{
-		rs[i] = s[i];
-		i++;
-	}
-	rs[i] = '\0';
-	return (rs);
-}
-
-int	color_atoi(char *s)
-{
-	int	res;
-	int	i;
-
-	i = 0;
-	res = 0;
-	if (ft_strlen(s) > 3)
-		return (-1);
-	while (s[i] && (s[i] >= '0' && s[i] <= '9'))
-	{
-		res = res * 10 + (s[i] - 48);
-		i++;
-	}
-	if ((s[i] && !(s[i] >= '0' && s[i] <= '9')) || res > 255)
-		return (-1);
-	return (res);
-}
-
-t_mlx_data	*init_data(t_elements *elm)
-{
-	t_mlx_data		*data;
-
-	data = malloc(sizeof(t_mlx_data));
-	data->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", 0);
-	get_dir(data, elm->map);
-	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	mlx_image_to_window(data->mlx, data->img, 0, 0);
-	data->elements = elm;
-	data->map = elm->map;
-	data->ceiling_color = (elm->c[0] << 24) | (elm->c[1] << 16) | (elm->c[2] << 8) | 0xFF;
-	data->floor_color = (elm->f[0] << 24) | (elm->f[1] << 16) | (elm->f[2] << 8) | 0xFF;
-	data->north = png_to_img(elm->no, data);
-	data->south = png_to_img(elm->so, data);
-	data->west = png_to_img(elm->we, data);
-	data->east =  png_to_img(elm->ea, data);
-	return (data);
-}
-
-mlx_image_t	*png_to_img(char *path, t_mlx_data *data)
-{
-	mlx_texture_t	*txt;
-	mlx_image_t		*img;
-
-	txt = mlx_load_png(path);
-	if (!txt)
-	{
-		free_data(data);
-		ft_error("Error: invalid path", NULL, NULL);
-	}
-	img = mlx_texture_to_image(data->mlx, txt);
-	if (!img)
-	{
-		free_data(data);
-		ft_error("Error: invalid path", NULL, NULL);
-	}
-	mlx_delete_texture(txt);
-	return (img);
-}
 void	get_dir(t_mlx_data *data, char **map)
 {
 	int	y;
@@ -174,28 +83,5 @@ void	get_dir(t_mlx_data *data, char **map)
 			x++;
 		}
 		y++;
-	}
-}
-void	match_dir(t_mlx_data *data, char c)
-{
-	if (c == 'N')
-	{
-		data->dir_x = 0;
-		data->dir_y = -1;
-	}
-	else if (c == 'S')
-	{
-		data->dir_x = 0;
-		data->dir_y = 1;
-	}
-	else if (c == 'W')
-	{
-		data->dir_x = -1;
-		data->dir_y = 0;
-	}
-	else if (c == 'E')
-	{
-		data->dir_x = 1;
-		data->dir_y = 0;
 	}
 }

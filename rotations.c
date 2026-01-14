@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotations.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:42:21 by rroundi           #+#    #+#             */
-/*   Updated: 2026/01/11 10:52:31 by rroundi          ###   ########.fr       */
+/*   Updated: 2026/01/14 20:44:44 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	rotate_l(t_mlx_data *data)
 
 void	rotate_r(t_mlx_data *data)
 {
-	float odir_x;
-	float oplan_x;
+	float	odir_x;
+	float	oplan_x;
 
 	odir_x = data->dir_x;
 	oplan_x = data->plan_x;

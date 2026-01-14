@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:18:13 by rroundi           #+#    #+#             */
-/*   Updated: 2026/01/11 06:02:30 by rroundi          ###   ########.fr       */
+/*   Updated: 2026/01/15 00:05:20 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	forward(t_mlx_data *data)
 		data->player_y = new_y;
 	}
 }
+
 void	back(t_mlx_data *data)
 {
 	float	new_x;
@@ -38,6 +39,7 @@ void	back(t_mlx_data *data)
 		data->player_y = new_y;
 	}
 }
+
 void	left(t_mlx_data *data)
 {
 	float	new_x;
@@ -51,10 +53,11 @@ void	left(t_mlx_data *data)
 		data->player_y = new_y;
 	}
 }
+
 void	right(t_mlx_data *data)
 {
-	float new_x;
-	float new_y;
+	float	new_x;
+	float	new_y;
 
 	new_x = data->player_x + data->plan_x * SPEED;
 	new_y = data->player_y + data->plan_y * SPEED;

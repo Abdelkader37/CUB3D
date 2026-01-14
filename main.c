@@ -6,16 +6,17 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 14:47:06 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/13 22:14:20 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/15 00:03:49 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void foo(void)
+void	foo(void)
 {
 	system("leaks -q cub3D");
 }
+
 int	main(int ac, char **av)
 {
 	int			fd;
