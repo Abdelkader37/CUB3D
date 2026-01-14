@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_elem.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 17:40:01 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/11 10:46:35 by rroundi          ###   ########.fr       */
+/*   Updated: 2026/01/13 22:29:09 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ void	free_elm(t_elements *elm, char *line)
 	free(elm->no);
 	free(elm->so);
 	free(elm->we);
+	free(elm->c);
+	free(elm->f);
+	close(elm->fd);
 	free(line);
 	free(elm);
 }
@@ -72,6 +75,10 @@ void	free_elm(t_elements *elm, char *line)
 void	ft_error(char *error, t_elements *elm, char *line)
 {
 	printf("%s\n", error);
-	free_elm(elm, line);
+	if(elm)
+	{
+		free_map(elm->map);
+		free_elm(elm, line);
+	}
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:20:56 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/10 20:40:25 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/13 21:37:45 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,12 +180,14 @@ int	*dup_color(char *line)
 	arr = malloc(3 * sizeof(int));
 	tmp = dup_elm(line);
 	str = ft_split(tmp, ',');
+	free(tmp);
 	if (get_size(str) != 3)
 		return (NULL);
 	arr[0] = color_atoi(str[0]);
 	arr[1] = color_atoi(str[1]);
 	arr[2] = color_atoi(str[2]);
+	free_map(str);
 	if (arr[0] == -1 || arr[1] == -1 || arr[2] == -1)
-		return (NULL);
+		return (free(arr),NULL);
 	return (arr);
 }

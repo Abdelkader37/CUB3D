@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 22:39:42 by rroundi           #+#    #+#             */
-/*   Updated: 2026/01/12 09:21:12 by rroundi          ###   ########.fr       */
+/*   Updated: 2026/01/13 22:10:27 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int color_atoi(char *s);
 int		*dup_color(char *line);
 void	wall_height(t_mlx_data	*data);
 void    get_dir(t_mlx_data  *data, char **map);
-mlx_image_t *png_to_img(char *path, mlx_t *mlx);
+mlx_image_t	*png_to_img(char *path, t_mlx_data *data);
 void 	randering(t_mlx_data *data, char **map);
 void     match_dir(t_mlx_data   *data, char c);
 void	ceiling(t_mlx_data *data, int x);
@@ -127,8 +127,10 @@ void	loop(void *par);
 void	rotate_r(t_mlx_data *data);
 void	rotate_l(t_mlx_data *data);
 void ft_error(char *error, t_elements *elm, char *line);
+void	free_elm(t_elements *elm, char *line);
 void	free_map(char **map);
-void	free_eml2(t_elements *elm);
+// void	free_eml2(t_elements *elm);
 void	free_data(t_mlx_data *data);
+void	free_map(char **map);
 
 #endif
