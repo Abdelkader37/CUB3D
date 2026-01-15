@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 20:33:31 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/14 20:43:05 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/15 18:16:44 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ mlx_image_t	*png_to_img(char *path, t_mlx_data *data)
 	if (!txt)
 	{
 		free_data(data);
-		ft_error("Error: invalid path", NULL, NULL);
+		ft_error("Error:\nInvalid path", NULL, NULL);
 	}
 	img = mlx_texture_to_image(data->mlx, txt);
 	if (!img)
 	{
 		free_data(data);
-		ft_error("Error: invalid path", NULL, NULL);
+		ft_error("Error:\nInvalid path", NULL, NULL);
 	}
 	mlx_delete_texture(txt);
 	return (img);

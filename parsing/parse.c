@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:20:56 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/14 20:39:25 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/15 18:18:50 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	chek_file_extention(char *s1, char *s2)
 	while (len1 >= 0 || len2 >= 0)
 	{
 		if (s1[len1] != s2[len2])
-			ft_error("Error: Invalid extention", NULL, NULL);
+			ft_error("Error:\nInvalid extention", NULL, NULL);
 		if (len2 == 0)
 		{
 			if (s1[len1 - 1] && s1[len1 - 1] != '/')
 				return ;
 			else
-				ft_error("Error: Invalid extention", NULL, NULL);
+				ft_error("Error:\nInvalid extention", NULL, NULL);
 		}
 		len1--;
 		len2--;

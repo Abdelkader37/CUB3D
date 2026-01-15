@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 17:40:01 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/14 20:39:58 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/15 21:33:32 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	parse_color(char **line, t_elements *elm, int **color, char *tmp)
 	skip_space(line);
 	*color = dup_color(*line);
 	if (*color == NULL)
-		ft_error("Error: Invalid color", elm, tmp);
+		ft_error("Error:\nInvalid color", elm, tmp);
 	elm->paths++;
 }
 
@@ -35,7 +35,7 @@ void	hundle_elem(t_elements *elm, char *line)
 	char	*tmp;
 
 	if (word_cont(line) != 2)
-		ft_error("Error: Invalid element 1", elm, line);
+		ft_error("Error:\nInvalid element", elm, line);
 	tmp = line;
 	skip_space(&line);
 	if (*line == 'F' && *(line + 1) == ' ' && elm->f == NULL)
@@ -55,7 +55,7 @@ void	hundle_elem(t_elements *elm, char *line)
 		&& elm->ea == NULL)
 		elm->ea = parse_texture(&line, elm);
 	else
-		ft_error("Error: Invalid element", elm, tmp);
+		ft_error("Error:\nInvalid element", elm, tmp);
 	line = tmp;
 }
 

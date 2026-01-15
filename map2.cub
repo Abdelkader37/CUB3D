@@ -1,13 +1,14 @@
-NO ./textures/822.png
-SO ./textures/884.png
-WE ./textures/885.png
-EA ./textures/822.png
-
-F    75,53,38
-C    183,188,204       
+NO ./textures/north.png
+SO ./textures/south.png
+EA ./textures/east.png
+WE ./textures/west.png
 
 
-1111111111
-111S000001
-1111111111
-1111111111
+F    111,0,0
+C    113,188,204
+
+111111111111
+100000000001
+100000000001
+100000000N01
+111111111111
