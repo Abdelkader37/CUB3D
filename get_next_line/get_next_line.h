@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 11:11:09 by aqrafi            #+#    #+#             */
-/*   Updated: 2024/12/02 22:16:12 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/15 18:09:13 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif

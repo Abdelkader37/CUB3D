@@ -6,7 +6,7 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 11:04:40 by aqrafi            #+#    #+#             */
-/*   Updated: 2024/12/08 15:26:33 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/15 18:06:33 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ char	*get_all(int fd, char *line)
 	char	*buffer;
 	int		index;
 
-	buffer = malloc(BUFFER_SIZE + 1);
+	buffer = malloc(2);
 	if (!buffer)
 		return (free(line), NULL);
 	while (1)
 	{
-		index = read(fd, buffer, BUFFER_SIZE);
+		index = read(fd, buffer, 1);
 		if (index < 0)
 		{
 			free(buffer);

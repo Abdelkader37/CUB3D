@@ -6,16 +6,11 @@
 /*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 14:47:06 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/15 00:03:49 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/15 18:08:28 by aqrafi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-void	foo(void)
-{
-	system("leaks -q cub3D");
-}
 
 int	main(int ac, char **av)
 {
@@ -23,7 +18,6 @@ int	main(int ac, char **av)
 	t_elements	*elem;
 	t_mlx_data	*data;
 
-	atexit(foo);
 	if (ac != 2)
 		return (1);
 	chek_file_extention(av[1], ".cub");
