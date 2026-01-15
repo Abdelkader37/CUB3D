@@ -3,59 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aqrafi <aqrafi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rroundi <rroundi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:51:52 by aqrafi            #+#    #+#             */
-/*   Updated: 2026/01/15 00:53:10 by aqrafi           ###   ########.fr       */
+/*   Updated: 2026/01/15 18:00:18 by rroundi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-uint32_t	get_texture_pixel(mlx_image_t *texture, uint32_t x, uint32_t y)
+void	draw_wall(t_mlx_data *data, mlx_image_t *texture, int x, int tex_x)
 {
-	int			index;
-	uint8_t		*pixels;
-
-	if (!texture || x >= texture->width || y >= texture->height)
-		return (0x808080FF);
-	index = (y * texture->width + x) * 4;
-	pixels = texture->pixels;
-	return ((uint32_t)pixels[index] << 24 
-		| (uint32_t)pixels[index + 1] << 16 | (uint32_t)pixels[index + 2] << 8 
-		| (uint32_t)pixels[index + 3]);
-}
-
-void	wall_height(t_mlx_data *data)
-{
-	data->line_height = (int)(HEIGHT / data->ray_dis);
-	data->draw_start = -data->line_height / 2 + HEIGHT / 2;
-	if (data->draw_start < 0)
-		data->draw_start = 0;
-	data->draw_end = data->line_height / 2 + HEIGHT / 2;
-	if (data->draw_end > HEIGHT)
-		data->draw_end = HEIGHT - 1;
-}
-
-void	wall(t_mlx_data *data, int x)
-{
-	mlx_image_t	*texture;
-	int			tex_x;
-	int			y;
 	double		step;
 	double		tex_pos;
 	int			tex_y;
 	uint32_t	color;
+	int			y;
 
-	if (data->side == 0 && data->ray_x < 0)
-		texture = data->west;
-	else if (data->side == 0 && data->ray_x > 0)
-		texture = data->east;
-	else if (data->side == 1 && data->ray_y < 0)
-		texture = data->north;
-	else
-		texture = data->south;
-	tex_x = (int)(data->wall_x * texture->width);
 	step = 1.0 * texture->height / data->line_height;
 	tex_pos = (data->draw_start - HEIGHT / 2 + data->line_height / 2) * step;
 	y = data->draw_start;
@@ -69,6 +33,16 @@ void	wall(t_mlx_data *data, int x)
 		mlx_put_pixel(data->img, x, y, color);
 		y++;
 	}
+}
+
+void	wall(t_mlx_data *data, int x)
+{
+	mlx_image_t	*texture;
+	int			tex_x;
+
+	texture = get_texture(data);
+	tex_x = (int)(data->wall_x * texture->width);
+	draw_wall(data, texture, x, tex_x);
 }
 
 void	ceiling(t_mlx_data *data, int x)
